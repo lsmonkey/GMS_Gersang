@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<!-- CMS 로그인 레이아웃 정의 -->
+	<definition name="layout_login_cms" template="/WEB-INF/revolution/jsp/common/layout/layoutLogin.jsp">
+        <put-attribute name="head"   value="/WEB-INF/revolution/jsp/common/layout/head.jsp"/>
+        <put-attribute name="body" value=""/>
+    </definition>
+    
+    <!-- CMS 로그인 레이아웃 패턴 정의 -->
+    <definition name="revolution/jsp/page/logn001/*" extends="layout_login_cms">
+        <put-attribute name="body" expression="/WEB-INF/revolution/jsp/page/logn001/{1}.jsp" />
+    </definition>
+
+	<!-- CMS 레이아웃 정의 -->
+	<definition name="layout_base_cms" template="/WEB-INF/revolution/jsp/common/layout/layout.jsp">
+        <put-attribute name="head"   value="/WEB-INF/revolution/jsp/common/layout/head.jsp"/>
+        <put-attribute name="navbar"   value="/WEB-INF/revolution/jsp/common/layout/navbar.jsp"/>
+        <put-attribute name="myInfo"   value="/WEB-INF/revolution/jsp/common/layout/myInfo.jsp"/>
+        <put-attribute name="left"   value="/WEB-INF/revolution/jsp/common/layout/left.jsp"/>
+        <put-attribute name="body" value=""/>
+    </definition>
+    
+    <!-- CMS 레이아웃 패턴 정의 -->
+    <definition name="revolution/jsp/page/*/*" extends="layout_base_cms">
+        <put-attribute name="body" expression="/WEB-INF/revolution/jsp/page/{1}/{2}.jsp" />
+    </definition>
+    
+    <!-- CMS 레이아웃 공통 패턴 정의 -->
+    <definition name="revolution/jsp/common/page/*" extends="layout_base_cms">
+        <put-attribute name="body" expression="/WEB-INF/revolution/jsp/common/page/{1}.jsp" />
+    </definition>
+    
+    <!-- 조선호텔 관리자 레이아웃 패턴 정의 -->
+    <definition name="bwcms/jsp/admin/common/*" extends="layout_base_cms">
+        <put-attribute name="body" expression="/WEB-INF/bwcms/jsp/admin/common/{1}.jsp" />
+    </definition>
+    
+    <!-- 조선호텔 관리자 레이아웃 패턴 정의 -->
+    <definition name="bwcms/jsp/admin/page/*/*" extends="layout_base_cms">
+        <put-attribute name="body" expression="/WEB-INF/bwcms/jsp/admin/page/{1}/{2}.jsp" />
+    </definition>
+    
+    <!-- basic layout -->
+	<definition name="layout_basic" template="/WEB-INF/views/tiles/tiles-layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/tiles/headerTemplate.jsp" />
+		<put-attribute name="left" value="/WEB-INF/views/tiles/sidebarTemplate.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="foot" value="/WEB-INF/views/tiles/footerTemplate.jsp" />
+	</definition>
+	
+	<definition name="*/*" extends="layout_basic">
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+		<put-attribute name="title" value="basic" />
+	</definition>
+    
+</tiles-definitions>

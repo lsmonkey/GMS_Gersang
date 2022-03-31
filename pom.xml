@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.gms.gersang</groupId>
+	<artifactId>GMS_Gersang</artifactId>
+	<name>GMS_Gersang</name>
+	<packaging>war</packaging>
+	<version>1.0.0-BUILD-SNAPSHOT</version>
+	<properties>
+		<maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        
+        <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
+        
+		<java-version>1.8</java-version>
+		<org.springframework.version>4.3.9.RELEASE</org.springframework.version>
+		<org.aspectj.version>1.8.5</org.aspectj.version>
+		<org.slf4j.version>1.6.6</org.slf4j.version>
+		
+		<org.mybatis.version>3.5.4</org.mybatis.version>
+		<org.mybatis.spring.version>2.0.3</org.mybatis.spring.version>
+		<com.fasterxml.jackson.core.version>2.10.3</com.fasterxml.jackson.core.version>
+		<maven.test.skip>true</maven.test.skip>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework.version}</version>
+			<exclusions>
+				<!-- Exclude Commons Logging in favor of SLF4j -->
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				 </exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+				
+		<!-- AspectJ -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${org.aspectj.version}</version>
+		</dependency>	
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${org.aspectj.version}</version>
+		</dependency>
+		
+		
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${org.slf4j.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${org.slf4j.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- MyBatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${org.mybatis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>${org.mybatis.spring.version}</version>
+		</dependency>
+
+		<!-- Jackson Core -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${com.fasterxml.jackson.core.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${com.fasterxml.jackson.core.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${com.fasterxml.jackson.core.version}</version>
+		</dependency>
+
+		<!-- Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<!-- Taglib -->
+		<dependency>
+			<groupId>org.apache.taglibs</groupId>
+			<artifactId>taglibs-standard-impl</artifactId>
+			<version>1.2.5</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/javax.el/el-api -->
+		<dependency>
+		    <groupId>javax.el</groupId>
+		    <artifactId>el-api</artifactId>
+		    <version>2.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.15</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.mail</groupId>
+					<artifactId>mail</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.jms</groupId>
+					<artifactId>jms</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jdmk</groupId>
+					<artifactId>jmxtools</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jmx</groupId>
+					<artifactId>jmxri</artifactId>
+				</exclusion>
+			</exclusions>
+			<scope>runtime</scope>
+		</dependency>
+
+		<!-- @Inject -->
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+		<!-- Commons DBCP -->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<!-- Apache Commons Fileupload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<!-- Apache Commons Io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.6</version>
+		</dependency>
+
+		<!-- Apache Commons Lang -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.9</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
+		<dependency>
+		    <groupId>commons-logging</groupId>
+		    <artifactId>commons-logging</artifactId>
+		    <version>1.0.4</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/commons-discovery/commons-discovery -->
+		<dependency>
+		    <groupId>commons-discovery</groupId>
+		    <artifactId>commons-discovery</artifactId>
+		    <version>0.2</version>
+		</dependency>
+
+		<!-- MySQL Connector/J -->
+        <dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.9</version>
+		</dependency>
+		<!-- MariaDB Java Client -->
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<version>2.5.4</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.oracle.ojdbc/ojdbc8 -->
+		<dependency>
+    		<groupId>com.oracle.ojdbc</groupId>
+    		<artifactId>ojdbc8</artifactId>
+		    <version>19.3.0.0</version>
+		</dependency>
+		
+		<!-- 아파치 POI -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.9</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/net.sf.jt400/jt400 -->
+		<dependency>
+		    <groupId>net.sf.jt400</groupId>
+		    <artifactId>jt400</artifactId>
+		    <version>8.5</version>
+		</dependency>
+
+		<!-- JSON.simple -->
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+		<!-- HTML Parser -->
+		<dependency>
+			<groupId>net.htmlparser.jericho</groupId>
+			<artifactId>jericho-html</artifactId>
+			<version>3.4</version>
+		</dependency>
+
+		<!-- Validator -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.4.3.Final</version>
+		</dependency>
+
+		<!-- Apache Commons Codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.14</version>
+		</dependency>
+
+		<!-- JSON In Java -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20190722</version>
+		</dependency>
+
+		<!-- Tomcat JDBC -->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jdbc</artifactId>
+			<version>8.5.51</version>
+		</dependency>
+  		<dependency>
+			<groupId>org.lazyluke</groupId>
+			<artifactId>log4jdbc-remix</artifactId>
+			<version>0.2.7</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.bouncycastle/bcpkix-jdk15on -->
+		<dependency>
+		    <groupId>org.bouncycastle</groupId>
+		    <artifactId>bcpkix-jdk15on</artifactId>
+		    <version>1.64</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpclient</artifactId>
+		    <version>4.5.3</version>
+		</dependency>
+		<!--JJWT-->
+	    <dependency>
+	        <groupId>io.jsonwebtoken</groupId>
+	        <artifactId>jjwt-api</artifactId>
+	        <version>0.10.7</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>io.jsonwebtoken</groupId>
+	        <artifactId>jjwt-impl</artifactId>
+	        <version>0.10.7</version>
+	        <scope>runtime</scope>
+	    </dependency>
+	    <dependency>
+	        <groupId>io.jsonwebtoken</groupId>
+	        <artifactId>jjwt-jackson</artifactId>
+	        <version>0.10.7</version>
+	        <scope>runtime</scope>
+	    </dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>2.8.5</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>de.vandermeer</groupId>
+		    <artifactId>asciitable</artifactId>
+		    <version>0.3.2</version>
+		</dependency>		
+		<!-- javax mail -->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+		
+		<!-- ehcache를 위하여 추가된 의존성  -->
+		<dependency>
+		    <groupId>net.sf.ehcache</groupId>
+		    <artifactId>ehcache</artifactId>
+		    <version>2.8.3</version>
+		</dependency>
+		
+		<!-- ehcache를 위하여 추가된 의존성  -->
+		<dependency>
+		   <groupId>org.springframework</groupId>
+		   <artifactId>spring-context-support</artifactId>
+		   <version>${org.springframework.version}</version>
+		</dependency>
+		
+		<dependency>
+		   <groupId>org.reflections</groupId>
+		   <artifactId>reflections</artifactId>
+		   <version>0.9.10</version>
+		</dependency>
+	</dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <compilerArgument>-Xlint:all</compilerArgument>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.2</version>
+			</plugin>
+        </plugins>
+    </build>
+</project>

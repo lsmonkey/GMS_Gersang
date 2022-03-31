@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+	
+	<context:component-scan base-package="com.gms.gersang"/>
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<mvc:annotation-driven ignoreDefaultModelOnRedirect="true" />
+
+	<!-- Enables the Aspectj @Aspect -->
+	<aop:aspectj-autoproxy />
+	
+	<!-- 다중뷰리졸버 설정 -->
+    <beans:bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <beans:property name="order" value="1"/>
+        <beans:property name="contentNegotiationManager">  
+            <beans:bean class="org.springframework.web.accept.ContentNegotiationManager">  
+                <beans:constructor-arg>  
+                <beans:bean class="org.springframework.web.accept.PathExtensionContentNegotiationStrategy">  
+                    <beans:constructor-arg>  
+                        <beans:map>  
+                            <beans:entry key="do" value="text/html" />
+                            <beans:entry key="json" value="application/json" />  
+                        </beans:map>  
+                    </beans:constructor-arg>  
+                </beans:bean>  
+                </beans:constructor-arg>  
+            </beans:bean>  
+        </beans:property>  
+        <beans:property name="viewResolvers">
+           <beans:list>
+               <beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+                 <!-- tiles3 resolver -->
+                <beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+                    <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+                    <beans:property name="order" value="1"/>
+                </beans:bean>
+                <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                    <beans:property name="prefix" value="/WEB-INF/views/" />
+                    <beans:property name="suffix" value=".jsp" />
+                    <beans:property name="order" value="2" />
+                </beans:bean>
+           </beans:list>
+        </beans:property>
+        <beans:property name="defaultViews">  
+            <beans:list>  
+                <!-- JSON View -->  
+                <beans:bean  class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />  
+            </beans:list>  
+        </beans:property>  
+    </beans:bean>
+
+	<!-- Tiles 3 definition -->
+    <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <beans:property name="definitions">
+           <beans:value>classpath:tiles/tiles-def.xml</beans:value>
+        </beans:property>
+    </beans:bean>
+</beans:beans>
